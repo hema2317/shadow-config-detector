@@ -1,3 +1,1 @@
 # shadow-config-detector
-
-
