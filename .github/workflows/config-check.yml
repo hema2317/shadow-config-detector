@@ -9,7 +9,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
   push:
-    branches: [main]   # so it also runs on main once, useful for branch protection
+    branches: [main]
 
 jobs:
   check-configs:
@@ -30,7 +30,7 @@ jobs:
           name: config-report
           path: reports/config-report.md
       - name: Comment report on PR
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' && always() }}
         uses: thollander/actions-comment-pull-request@v2
         with:
           filePath: reports/config-report.md
