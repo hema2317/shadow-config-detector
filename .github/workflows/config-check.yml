@@ -1,0 +1,28 @@
+name: Shadow Config Detector
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-configs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Run Detector
+        run: npm run check
+      - name: Upload report (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: config-report
+          path: reports/config-report.md
+      - name: Comment report on PR
+        if: always()
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          filePath: reports/config-report.md
