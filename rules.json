@@ -1,0 +1,5 @@
+{
+  "requiredKeys": ["APP_NAME", "API_URL", "FEATURE_FLAGS"],
+  "forbiddenKeys": ["DEBUG_PASSWORD", "LOCAL_ONLY_TOKEN"],
+  "mustMatchAcross": ["FEATURE_FLAGS"]
+}
