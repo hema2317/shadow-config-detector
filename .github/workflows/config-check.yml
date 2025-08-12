@@ -10,6 +10,9 @@ on:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
 
 jobs:
   check-configs:
