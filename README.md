@@ -1,4 +1,1 @@
 # shadow-config-detector
-# trigger
-.
-
