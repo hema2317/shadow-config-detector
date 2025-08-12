@@ -1,5 +1,24 @@
 {
-  "requiredKeys": ["APP_NAME", "API_URL", "FEATURE_FLAGS"],
-  "forbiddenKeys": ["DEBUG_PASSWORD", "LOCAL_ONLY_TOKEN"],
-  "mustMatchAcross": ["FEATURE_FLAGS"]
+  "MAX_ITEMS": {
+    "type": "number",
+    "min": 1,
+    "max": 100,
+    "sameAcrossEnvs": true,
+    "description": "Must be a number between 1 and 100; must match in dev/staging/prod."
+  },
+  "LOG_LEVEL": {
+    "type": "string",
+    "enum": ["debug", "info", "warn", "error"],
+    "sameAcrossEnvs": true,
+    "description": "Must be one of debug|info|warn|error and consistent across envs."
+  },
+  "FEATURE_FLAGS": {
+    "type": "object",
+    "schema": {
+      "newCheckout": "boolean",
+      "betaBanner": "boolean"
+    },
+    "sameAcrossEnvs": false,
+    "description": "Known flags and their types; allowed to differ per env."
+  }
 }
